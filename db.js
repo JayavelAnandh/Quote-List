@@ -1,15 +1,14 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
+dotenv.config();
 function connectDataBase() {
   const params = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
   try {
-    mongoose.connect(
-      "mongodb+srv://jvanandh984:ULmCskKAZeO8kQn6@cluster0.jzstokr.mongodb.net/",
-      params
-    );
+    mongoose.connect(process.env.MONGO_DB_URL, params);
     console.log("DB is connected !");
   } catch (error) {
     console.log(error);
